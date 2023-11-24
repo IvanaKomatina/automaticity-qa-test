@@ -9,6 +9,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@faker-js/faker": "^8.3.1",
     "cypress": "^13.6.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }

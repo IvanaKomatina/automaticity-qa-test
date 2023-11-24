@@ -23,3 +23,20 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('generateFixture', () => {
+    const { faker } = require('@faker-js/faker')
+
+    cy.writeFile('cypress/fixtures/newTable.json', {
+        'firstName': faker.person.firstName(),
+        'lastName': faker.person.lastName(),
+        'email': faker.internet.email(),
+        'age': faker.string.numeric({ min: 18, max: 99 }),
+        'salary': faker.string.numeric({ min: 40000, max: 100000 }),
+        'department': faker.commerce.department(),
+        'invalidEmail': faker.string.alpha(),
+        'invalidAge': faker.string.alpha(),
+        'invalidSalary':faker.string.alpha(),
+        'invalidFirstName': faker.string.alphanumeric(50)
+    })
+})
