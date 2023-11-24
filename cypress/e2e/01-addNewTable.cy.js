@@ -13,13 +13,13 @@ describe('Add New Table', () => {
     it('Validate User is able to add a new table', () => {
         cy.fixture('newTable').then(newTableData => {
             webTablesPage.addNewTable(newTableData)
-            webTablesPage.validateAllEnteredFieldAreVisibleInColumns(newTableData)
+            webTablesPage.validateAllEnteredFieldAreVisibleInColumns(webTablesPage.tableColumnsFourthRow, newTableData)
         })
     })
 
     it('Validate User is not able to add a new table with empty fields', () => {
             webTablesPage.addNewTable({})
-            webTablesPage.validateAllFieldsMustBeEntered()
+            webTablesPage.validateAllFieldsMustBeEntered(webTablesPage.tableColumnsFourthRow)
     })
 
     it('Validate User is not able to add a new table with missing domen in email', () => {
@@ -56,7 +56,7 @@ describe('Add New Table', () => {
             const newTableDataWithInvalidFirstName = _.clone(newTableData)
             newTableDataWithInvalidFirstName.firstName = newTableDataWithInvalidFirstName.invalidFirstName
             webTablesPage.addNewTable(newTableDataWithInvalidFirstName)
-            webTablesPage.tableColumns.eq(1).invoke('text').then((text) => {
+            webTablesPage.tableColumnsFourthRow.eq(1).invoke('text').then((text) => {
                 expect(text).to.have.lengthOf(25)
             })
         })
