@@ -39,4 +39,21 @@ Cypress.Commands.add('generateFixture', () => {
         'invalidSalary':faker.string.alpha(),
         'invalidFirstName': faker.string.alphanumeric(50)
     })
+
+    cy.writeFile('cypress/fixtures/forms.json', {
+        'firstName': faker.person.firstName(),
+        'lastName': faker.person.lastName(),
+        'email': faker.internet.email(),
+        'gender': faker.number.int({ min: 0, max: 2 }),
+        'mobile': faker.string.numeric(10),
+        'date': faker.date.past(),
+        'subject': 'Maths',
+        'hobbies': faker.number.int({ min: 0, max: 2 }),
+        'pictureName': 'dog-puppy-on-garden-royalty-free-image-1586966191.jpg',
+        'currentAddress': faker.location.streetAddress(),
+        'state': 'NCR',
+        'city': 'Delhi'
+    })
 })
+
+import 'cypress-file-upload';
