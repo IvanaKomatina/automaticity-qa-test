@@ -28,6 +28,14 @@ module.exports = {
         return cy.get('h5').contains('Widgets')
     },
 
+    get progressBar() {
+        return cy.get('span').contains('Progress Bar')
+    },
+
+    get progressBarTitle() {
+        return cy.get('div[class="main-header"]')
+    },
+
     openWebTables() {
         this.elementsButton.click()
         cy.url().should('include', '/elements')
@@ -41,4 +49,11 @@ module.exports = {
         this.practiceForm.click()
         this.practiceFormTitle.should('have.text', 'Practice Form')
     },
+
+    openProgressBar() {
+        this.widgetsButton.click()
+        cy.url().should('include', '/widgets')
+        this.progressBar.click()
+        this.progressBarTitle.should('have.text', 'Progress Bar')
+    }
 }
