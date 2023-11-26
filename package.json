@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cypress-open": "cypress open"
+    "cypress-open": "cypress open",
+    "cypress-run-headless": "cypress run",
+    "cypress-run-headed": "cypress run --headed"
   },
   "author": "",
   "license": "ISC",
