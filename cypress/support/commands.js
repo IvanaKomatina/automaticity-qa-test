@@ -24,8 +24,9 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+const { faker } = require('@faker-js/faker')
+
 Cypress.Commands.add('generateFixture', () => {
-    const { faker } = require('@faker-js/faker')
 
     cy.writeFile('cypress/fixtures/newTable.json', {
         'firstName': faker.person.firstName(),
@@ -53,6 +54,17 @@ Cypress.Commands.add('generateFixture', () => {
         'currentAddress': faker.location.streetAddress(),
         'state': 'NCR',
         'city': 'Delhi'
+    })
+})
+
+Cypress.Commands.add('generateFixtureAPI', () => {
+
+    cy.writeFile('cypress/fixtures/usersAPI.json', {
+        'username': faker.person.firstName(),
+        'password': faker.internet.password({prefix: '!'}),
+        'invalidPassword': faker.internet.password(),
+        'invalidPasswordNumeric': faker.string.numeric(8),
+        'invalidPasswordLessThan8Characters': faker.string.numeric(7),
     })
 })
 
